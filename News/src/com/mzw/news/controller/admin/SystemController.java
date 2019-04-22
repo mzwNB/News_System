@@ -1,16 +1,12 @@
 package com.mzw.news.controller.admin;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.mzw.news.entity.Authority;
+import com.mzw.news.entity.Menu;
+import com.mzw.news.entity.Role;
+import com.mzw.news.entity.User;
+import com.mzw.news.service.*;
+import com.mzw.news.util.CpachaUtil;
+import com.mzw.news.util.MenuUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,17 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Authority;
-import com.mzw.news.entity.Menu;
-import com.mzw.news.entity.Role;
-import com.mzw.news.entity.User;
-import com.mzw.news.service.AuthorityService;
-import com.mzw.news.service.LogService;
-import com.mzw.news.service.MenuService;
-import com.mzw.news.service.RoleService;
-import com.mzw.news.service.UserService;
-import com.mzw.news.util.CpachaUtil;
-import com.mzw.news.util.MenuUtil;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 系统操作类控制器
@@ -64,7 +58,9 @@ public class SystemController {
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView model,HttpServletRequest request){
 		List<Menu> userMenus = (List<Menu>)request.getSession().getAttribute("userMenus");
+
 		model.addObject("topMenuList", MenuUtil.getAllTopMenu(userMenus));
+		System.out.println(MenuUtil.getAllTopMenu(userMenus));
 		model.addObject("secondMenuList", MenuUtil.getAllSecondMenu(userMenus));
 		model.setViewName("system/index");
 		return model;//WEB-INF/views/+system/index+.jsp = WEB-INF/views/system/index.jsp

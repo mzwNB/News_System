@@ -1,13 +1,8 @@
 package com.mzw.news.controller.admin;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.mzw.news.entity.Menu;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.MenuService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Menu;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.MenuService;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 菜单管理控制器
@@ -40,6 +38,7 @@ public class MenuController {
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.addObject("topList", menuService.findTopList());
+		System.out.println(menuService.findTopList());
 		model.setViewName("menu/list");
 		return model;
 	}
