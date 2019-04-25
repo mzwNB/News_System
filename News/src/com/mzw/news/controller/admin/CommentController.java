@@ -1,9 +1,9 @@
 package com.mzw.news.controller.admin;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.mzw.news.entity.Comment;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.CommentService;
+import com.mzw.news.service.NewsService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Comment;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.CommentService;
-import com.mzw.news.service.NewsService;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RequestMapping("/admin/comment")
@@ -31,8 +30,6 @@ public class CommentController {
 
 	/**
 	 * 新闻评论列表页面
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
@@ -46,8 +43,6 @@ public class CommentController {
 
 	/**
 	 * 新闻评论添加
-	 * @param newsCategory
-	 * @return
 	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
@@ -88,8 +83,6 @@ public class CommentController {
 
 	/**
 	 * 新闻评论信息编辑
-	 * @param newsCategory
-	 * @return
 	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
@@ -127,8 +120,6 @@ public class CommentController {
 
 	/**
 	 * 删除新闻评论
-	 * @param id
-	 * @return
 	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
@@ -154,9 +145,6 @@ public class CommentController {
 
 	/**
 	 * 分页模糊搜索查询列表
-	 * @param name
-	 * @param page
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody

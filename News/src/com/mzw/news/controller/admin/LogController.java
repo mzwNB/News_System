@@ -1,9 +1,8 @@
 package com.mzw.news.controller.admin;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.mzw.news.entity.Log;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.LogService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Log;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.LogService;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 日志管理控制器
@@ -31,8 +30,6 @@ public class LogController {
 
 	/**
 	 * 日志列表页面
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
@@ -42,8 +39,6 @@ public class LogController {
 
 	/**
 	 * 获取日志列表
-	 * @param page
-	 * @param content
 	 *
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
@@ -63,8 +58,6 @@ public class LogController {
 
 	/**
 	 * 添加日志
-	 * @param user
-	 * @return
 	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
@@ -96,8 +89,6 @@ public class LogController {
 
 	/**
 	 * 批量删除日志
-	 * @param ids
-	 * @return
 	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody

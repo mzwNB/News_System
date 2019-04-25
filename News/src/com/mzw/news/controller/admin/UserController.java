@@ -1,12 +1,9 @@
 package com.mzw.news.controller.admin;
 
-import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.mzw.news.entity.User;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.RoleService;
+import com.mzw.news.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.User;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.RoleService;
-import com.mzw.news.service.UserService;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户管理控制器
- * @author llq
+ * @author mzw
  *
  */
 @RequestMapping("/admin/user")
@@ -37,8 +35,6 @@ public class UserController {
 
 	/**
 	 * 用户列表页面
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
@@ -50,11 +46,6 @@ public class UserController {
 
 	/**
 	 * 获取用户列表
-	 * @param page
-	 * @param username
-	 * @param roleId
-	 * @param sex
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
@@ -77,8 +68,6 @@ public class UserController {
 
 	/**
 	 * 添加用户
-	 * @param user
-	 * @return
 	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
@@ -121,8 +110,6 @@ public class UserController {
 
 	/**
 	 * 编辑用户
-	 * @param user
-	 * @return
 	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
@@ -165,8 +152,6 @@ public class UserController {
 
 	/**
 	 * 批量删除用户
-	 * @param ids
-	 * @return
 	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
@@ -192,9 +177,6 @@ public class UserController {
 
 	/**
 	 * 上传图片
-	 * @param photo
-	 * @param request
-	 * @return
 	 */
 	@RequestMapping(value="/upload_photo",method=RequestMethod.POST)
 	@ResponseBody
@@ -210,7 +192,7 @@ public class UserController {
 			ret.put("msg", "文件大小不能超过10M！");
 			return ret;
 		}
-		//��ȡ�ļ���׺
+        //判断文件类型
 		String suffix = photo.getOriginalFilename().substring(photo.getOriginalFilename().lastIndexOf(".")+1,photo.getOriginalFilename().length());
 		if(!"jpg,jpeg,gif,png".toUpperCase().contains(suffix.toUpperCase())){
 			ret.put("type", "error");
@@ -241,9 +223,6 @@ public class UserController {
 	}
 	/**
 	 * 判断该用户名是否存在
-	 * @param username
-	 * @param id
-	 * @return
 	 */
 	private boolean isExist(String username,Long id){
 		User user = userService.findByUsername(username);

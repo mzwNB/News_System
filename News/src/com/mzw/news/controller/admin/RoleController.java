@@ -1,9 +1,12 @@
 package com.mzw.news.controller.admin;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.mzw.news.entity.Authority;
+import com.mzw.news.entity.Menu;
+import com.mzw.news.entity.Role;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.AuthorityService;
+import com.mzw.news.service.MenuService;
+import com.mzw.news.service.RoleService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,18 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Authority;
-import com.mzw.news.entity.Menu;
-import com.mzw.news.entity.Role;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.AuthorityService;
-import com.mzw.news.service.MenuService;
-import com.mzw.news.service.RoleService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
  * 角色role控制器
- * @author llq
+ * @author mzw
  *
  */
 @RequestMapping("/admin/role")
@@ -42,9 +41,8 @@ public class RoleController {
 
 	/**
 	 * 角色列表页面
-	 * @param model
-	 * @return
-	 */
+
+     */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("/role/list");
@@ -54,9 +52,6 @@ public class RoleController {
 
 	/**
 	 * 获取角色列表
-	 * @param page
-	 * @param name
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
@@ -75,9 +70,8 @@ public class RoleController {
 
 	/**
 	 * 角色添加
-	 * @param role
-	 * @return
-	 */
+
+     */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Role role){
@@ -104,8 +98,6 @@ public class RoleController {
 
 	/**
 	 * 角色修改
-	 * @param role
-	 * @return
 	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
@@ -133,8 +125,6 @@ public class RoleController {
 
 	/**
 	 * 删除角色信息
-	 * @param id
-	 * @return
 	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
@@ -164,7 +154,6 @@ public class RoleController {
 
 	/**
 	 * 获取所有的菜单信息
-	 * @return
 	 */
 	@RequestMapping(value="/get_all_menu",method=RequestMethod.POST)
 	@ResponseBody
@@ -177,8 +166,6 @@ public class RoleController {
 
 	/**
 	 * 添加权限
-	 * @param ids
-	 * @return
 	 */
 	@RequestMapping(value="/add_authority",method=RequestMethod.POST)
 	@ResponseBody
@@ -217,8 +204,6 @@ public class RoleController {
 
 	/**
 	 * 获取某个角色的所有权限
-	 * @param roleId
-	 * @return
 	 */
 	@RequestMapping(value="/get_role_authority",method=RequestMethod.POST)
 	@ResponseBody

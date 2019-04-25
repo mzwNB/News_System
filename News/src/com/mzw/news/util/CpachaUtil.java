@@ -1,22 +1,17 @@
 package com.mzw.news.util;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
 /**
- * ��֤��������
- * 
- * @author llq
+ *验证码工具類
+ *
+ * @author mzw
  */
 public class CpachaUtil {
 	
-	/**
-	 * ��֤����Դ
-	 */
+
 	final private char[] code = {
 		'2', '3', '4', '5', '6', '7', '8', '9',
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -39,26 +34,23 @@ public class CpachaUtil {
 	};
 	
 	/**
-	 * ��֤�볤��
-	 * Ĭ��4���ַ�
+     *
 	 */
 	private int vcodeLen = 4;
 	/**
-	 * ��֤��ͼƬ�����С
-	 * Ĭ��17
+     * 字体大小
 	 */
 	private int fontsize = 21;
 	/**
-	 * ��֤��ͼƬ���
+     * 图片宽度
 	 */
 	private int width = (fontsize+1)*vcodeLen+10;
 	/**
-	 * ��֤��ͼƬ�߶�
+     * 图片高度
 	 */
 	private int height = fontsize+12;
 	/**
-	 * ����������
-	 * Ĭ��3��
+     * 干扰线
 	 */
 	private int disturbline = 3;
 	
@@ -66,8 +58,7 @@ public class CpachaUtil {
 	public CpachaUtil(){}
 	
 	/**
-	 * ָ����֤�볤��
-	 * @param vcodeLen ��֤�볤��
+     *指定验证码长度
 	 */
 	public CpachaUtil(int vcodeLen) {
 		this.vcodeLen = vcodeLen;
@@ -75,10 +66,7 @@ public class CpachaUtil {
 	}
 	
 	/**
-	 * ָ����֤�볤�ȡ�ͼƬ��ȡ��߶�
-	 * @param vcodeLen
-	 * @param width
-	 * @param height
+     * ָ指定验证码长度、图片宽度、高度
 	 */
 	public CpachaUtil(int vcodeLen,int width,int height) {
 		this.vcodeLen = vcodeLen;
@@ -87,54 +75,48 @@ public class CpachaUtil {
 	}
 	
 	/**
-	 * ������֤��ͼƬ
-	 * @param vcode Ҫ������֤��
-	 * @param drawline �Ƿ񻭸�����
-	 * @return
+     * 生成验证码图片
 	 */
 	public BufferedImage generatorVCodeImage(String vcode, boolean drawline){
-		//������֤��ͼƬ
+        //创建验证码图片
 		BufferedImage vcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics g = vcodeImage.getGraphics();
-		//��䱳��ɫ
+        //填充背景色
 		g.setColor(new Color(246, 240, 250));
 		g.fillRect(0, 0, width, height);
 		if(drawline){
 			drawDisturbLine(g);
 		}
-		//��������α�����
+        //用于生成伪随机数
 		Random ran = new Random();
-		//��ͼƬ�ϻ���֤��
+        //在图片上画验证码
 		for(int i = 0;i < vcode.length();i++){
-			//��������
+            //设置字体
 			g.setFont(new Font(fontNames[ran.nextInt(fontNames.length)], fontStyles[ran.nextInt(fontStyles.length)], fontsize));
-			//���������ɫ
+            //随机生成颜色
 			g.setColor(getRandomColor());
-			//����֤��
+            //画验证码
 			g.drawString(vcode.charAt(i)+"", i*fontsize+10, fontsize+5);
 		}
-		//�ͷŴ�ͼ�ε��������Լ���ʹ�õ�����ϵͳ��Դ
+        //释放此图形用的所有系统资源
 		g.dispose();
 		
 		return vcodeImage;
 	}
 	/**
-	 * �����ת�������֤��ͼƬ
-	 * @param vcode
-	 * @param drawline �Ƿ񻭸�����
-	 * @return
+     * 获得旋转字体的验证码图片
 	 */
 	public BufferedImage generatorRotateVCodeImage(String vcode, boolean drawline){
-		//������֤��ͼƬ
+        //创建验证码图片
 		BufferedImage rotateVcodeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = rotateVcodeImage.createGraphics();
-		//��䱳��ɫ
+        //填充背景色
 		g2d.setColor(new Color(246, 240, 250));
 		g2d.fillRect(0, 0, width, height);
 		if(drawline){
 			drawDisturbLine(g2d);
 		}
-		//��ͼƬ�ϻ���֤��
+        //在图片上画验证码
 		for(int i = 0;i < vcode.length();i++){
 			BufferedImage rotateImage = getRotateImage(vcode.charAt(i));
 			g2d.drawImage(rotateImage, null, (int) (this.height * 0.7) * i, 0);
@@ -143,8 +125,8 @@ public class CpachaUtil {
 		return rotateVcodeImage;
 	}
 	/**
-	 * ������֤��
-	 * @return ��֤��
+     * 生成验证码
+     * @return 验证码
 	 */
 	public String generatorVCode(){
 		int len = code.length;
@@ -157,7 +139,7 @@ public class CpachaUtil {
 		return sb.toString();
 	}
 	/**
-	 * Ϊ��֤��ͼƬ��һЩ������
+     为验证码图片画一些干扰线
 	 * @param g 
 	 */
 	private void drawDisturbLine(Graphics g){
@@ -168,26 +150,26 @@ public class CpachaUtil {
 			int x2 = ran.nextInt(width);
 			int y2 = ran.nextInt(height);
 			g.setColor(getRandomColor());
-			//��������
+            //画干扰线
 			g.drawLine(x1, y1, x2, y2);
 		}
 	}
 	/**
-	 * ��ȡһ����ת��ͼƬ
-	 * @param c Ҫ�����ַ�
+     * 获取一张旋转的图片
+     * @param c 要画的字符
 	 * @return
 	 */
 	private BufferedImage getRotateImage(char c){
 		BufferedImage rotateImage = new BufferedImage(height, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = rotateImage.createGraphics();
-		//����͸����Ϊ0
+        //设置透明度为0
 		g2d.setColor(new Color(255, 255, 255, 0));
 		g2d.fillRect(0, 0, height, height);
 		Random ran = new Random();
 		g2d.setFont(new Font(fontNames[ran.nextInt(fontNames.length)], fontStyles[ran.nextInt(fontStyles.length)], fontsize));
 		g2d.setColor(getRandomColor());
 		double theta = getTheta();
-		//��תͼƬ
+        //旋转图片
 		g2d.rotate(theta, height/2, height/2);
 		g2d.drawString(Character.toString(c), (height-fontsize)/2, fontsize+5);
 		g2d.dispose();
@@ -195,21 +177,21 @@ public class CpachaUtil {
 		return rotateImage;
 	}
 	/**
-	 * @return ����һ�������ɫ
+     * 返回一个随机颜色
 	 */
 	private Color getRandomColor(){
 		Random ran = new Random();
 		return new Color(ran.nextInt(220), ran.nextInt(220), ran.nextInt(220)); 
 	}
 	/**
-	 * @return �Ƕ�
+     * 角度
 	 */
 	private double getTheta(){
 		return ((int) (Math.random()*1000) % 2 == 0 ? -1 : 1)*Math.random();
 	}
 
 	/**
-	 * @return ��֤���ַ�����
+     * @return 验证码字符个数
 	 */
 	public int getVcodeLen() {
 		return vcodeLen;
@@ -229,8 +211,7 @@ public class CpachaUtil {
 		return fontsize;
 	}
 	/**
-	 * ���������С
-	 * @param fontsize
+     * 字体大小
 	 */
 	public void setFontsize(int fontsize) {
 		this.width = (fontsize+3)*vcodeLen+10;
@@ -238,42 +219,38 @@ public class CpachaUtil {
 		this.fontsize = fontsize;
 	}
 	/**
-	 * @return ͼƬ���
+     * 图片宽度
 	 */
 	public int getWidth() {
 		return width;
 	}
 	/**
-	 * ����ͼƬ���
-	 * @param width
+     *设置图片宽度
+     * 	 * @param width
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 	/**
-	 * @return ͼƬ�߶�
+     * 图片高度
 	 */
 	public int getHeight() {
 		return height;
 	}
 	/**
-	 * ����ͼƬ�߶�
-	 * @param height 
+     * 图片高度
+     *
 	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	/**
-	 * @return ����������
-	 */
-	public int getDisturbline() {
+
+
+    public int getDisturbline() {
 		return disturbline;
 	}
-	/**
-	 * ���ø���������
-	 * @param disturbline
-	 */
-	public void setDisturbline(int disturbline) {
+
+    public void setDisturbline(int disturbline) {
 		this.disturbline = disturbline;
 	}
 	

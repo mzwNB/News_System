@@ -1,25 +1,21 @@
 package com.mzw.news.interceptor;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.mzw.news.entity.Menu;
+import com.mzw.news.util.MenuUtil;
 import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.Menu;
-import com.mzw.news.util.MenuUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 后台登录拦截器
- *@author 马哲文
- *@version 1.0
+ *@author mzw
  * 2019年4月22日14:39:10
  */
 public class LoginInterceptor implements HandlerInterceptor {

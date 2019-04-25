@@ -28,7 +28,7 @@ import java.util.Map;
 
 /**
  * 系统操作类控制器
- * @author llq
+ * @author mzw
  *
  */
 @Controller
@@ -52,8 +52,6 @@ public class SystemController {
 
 	/**
 	 * 系统登录后的主页
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView model,HttpServletRequest request){
@@ -68,8 +66,6 @@ public class SystemController {
 
 	/**
 	 * 系统登录后的欢迎页
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/welcome",method=RequestMethod.GET)
 	public ModelAndView welcome(ModelAndView model){
@@ -78,8 +74,7 @@ public class SystemController {
 	}
 	/**
 	 * 登陆页面
-	 * @param model
-	 * @return
+
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public ModelAndView login(ModelAndView model){
@@ -89,9 +84,6 @@ public class SystemController {
 
 	/**
 	 * 登录表单提交处理控制器
-	 * @param user
-	 * @param cpacha
-	 * @return
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
@@ -166,8 +158,7 @@ public class SystemController {
 
 	/**
 	 * 后台退出注销功能
-	 * @param request
-	 * @return
+     *
 	 */
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logout(HttpServletRequest request){
@@ -180,8 +171,6 @@ public class SystemController {
 
 	/**
 	 * 修改密码页面
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/edit_password",method=RequestMethod.GET)
 	public ModelAndView editPassword(ModelAndView model){
@@ -217,13 +206,7 @@ public class SystemController {
 	}
 
 	/**
-	 * 本系统所有的验证码均采用此方法
-	 * @param vcodeLen
-	 * @param width
-	 * @param height
-	 * @param cpachaType:用来区别验证码的类型，传入字符串
-	 * @param request
-	 * @param response
+     * 验证码
 	 */
 	@RequestMapping(value="/get_cpacha",method=RequestMethod.GET)
 	public void generateCpacha(

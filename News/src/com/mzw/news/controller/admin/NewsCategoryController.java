@@ -1,8 +1,8 @@
 package com.mzw.news.controller.admin;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.mzw.news.entity.NewsCategory;
+import com.mzw.news.page.Page;
+import com.mzw.news.service.NewsCategoryService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mzw.news.entity.NewsCategory;
-import com.mzw.news.page.Page;
-import com.mzw.news.service.NewsCategoryService;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 新闻分类控制器
- * @author llq
+ * @author mzw
  *
  */
 @RequestMapping("/admin/news_category")
@@ -30,8 +29,6 @@ public class NewsCategoryController {
 
 	/**
 	 * 新闻分类列表页面
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
@@ -70,8 +67,6 @@ public class NewsCategoryController {
 
 	/**
 	 * 新闻分类信息编辑
-	 * @param newsCategory
-	 * @return
 	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
@@ -98,9 +93,7 @@ public class NewsCategoryController {
 	}
 
 	/**
-	 * 新闻分类信息编辑
-	 * @param newsCategory
-	 * @return
+     * 删除新闻分类
 	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
@@ -128,9 +121,7 @@ public class NewsCategoryController {
 	}
 
 	/**
-	 * 删除新闻分类
-	 * @param id
-	 * @return
+     * 新闻分类集合
 	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody

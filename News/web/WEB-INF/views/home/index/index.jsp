@@ -13,11 +13,11 @@
 	<div class="carousel-inner" role="listbox">
 	  <div class="item active">
 	  <a href="#" target="_blank" title="MZW技术分享博客网站" >
-	  <img src="../resources/home/images/side1.jpg" alt="MZW技术分享博客网站" class="img-responsive"></a>
+          <img src="../resources/home/images/side1.jpg" alt="MZW技术分享网站" class="img-responsive"></a>
 	  </div>
 	  <div class="item">
 	  <a href="#" target="_blank" title="个人博客" >
-	  <img src="../resources/home/images//side2.jpg" alt="MZW技术分享博客网站" class="img-responsive"></a>
+          <img src="../resources/home/images//side2.jpg" alt="MZW技术分享网站" class="img-responsive"></a>
 	  </div>
 	</div>
 	<a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow"> 

@@ -7,7 +7,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MZW新闻博客网站${title }</title>
+    <title>MZW技术交流网站${title }</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <link rel="stylesheet" type="text/css" href="../resources/home/css/bootstrap.min.css">
@@ -49,7 +49,7 @@ function addFavorite(url, title) {
 	  <!--  
 	  <li><a href="#" >标签云</a></li>
 		<li><a href="#" rel="nofollow" >读者墙</a></li>-->
-		<li><a href="#" onclick="" title="博客订阅" >
+        <li><a href="#" onclick="addFavorite()" title="博客订阅">
 			<i class="fa fa-rss">
 			</i> 博客订阅
 		</a></li>

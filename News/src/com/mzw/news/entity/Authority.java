@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Authority {
 	private Long id;
-	
-	private Long roleId;//��ɫid
-	
-	private Long menuId;//�˵�id
+
+    private Long roleId;
+
+    private Long menuId;
 
 	public Long getId() {
 		return id;

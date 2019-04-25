@@ -10,10 +10,11 @@
 	<div class="article-meta"> 
 		<span class="item article-meta-time">
 	  		<time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="发表时间：<fmt:formatDate value="${news.createTime }" pattern="yyyy-MM-dd" />"><i class="glyphicon glyphicon-time"></i> <fmt:formatDate value="${news.createTime }" pattern="yyyy-MM-dd hh:mm:ss" /></time>
-	  	</span> 
-	  	<span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：【猿来入此】">
+	  	</span>
+        <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title=""
+              data-original-title="来源：【${news.author }】">
 	  		<i class="glyphicon glyphicon-globe"></i> 
-	  		猿来入此新闻博客
+	  		mzw技术分享网站
 	  	</span> 
 	  	<span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="${news.title }" data-original-title="${news.title }">
 	  		<i class="glyphicon glyphicon-list"></i> 
